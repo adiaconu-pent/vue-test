@@ -3,7 +3,7 @@
 <script>
 
 export default {
-  name: "user-list-item",
+  name: "users-list-item",
   components: {},
   props: {
       user: Object

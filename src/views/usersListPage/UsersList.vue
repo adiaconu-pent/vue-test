@@ -3,11 +3,11 @@
 
 <script>
 import userService from "@/services/users";
-import UserListItem from "./userListItem/UserListItem.vue";
+import UsersListItem from "./usersListItem/UsersListItem.vue";
 
 export default {
-  name: "user-list",
-  components: { UserListItem },
+  name: "users-list",
+  components: { UsersListItem },
   data() {
     return {
       isLoading: false,

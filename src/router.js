@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import UserList from './views/usersPage/UserList.vue';
+import UserList from './views/usersListPage/UsersList.vue';
 import UserDetails from './views/UserDetails.vue';
 import Questions from './views/Questions.vue';
 import Tags from './views/Tags.vue';
