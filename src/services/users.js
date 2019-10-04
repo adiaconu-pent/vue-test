@@ -1,7 +1,6 @@
 import instance from './base';
 
-const resource = '/users'
-
+const resource = '/users';
 export default {
-    getUsers: instance.get(`${resource}`)
-}
+  getUsers: instance.get(`${resource}`),
+};

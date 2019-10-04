@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Users from './views/usersPage/Users';
-import UserDetails from './views/UserDetails';
-import Questions from './views/Questions';
-import Tags from './views/Tags';
-import NotFoundComponent from './components/NotFoundComponent'
+import Users from './views/usersPage/Users.vue';
+import UserDetails from './views/UserDetails.vue';
+import Questions from './views/Questions.vue';
+import Tags from './views/Tags.vue';
+import NotFoundComponent from './components/NotFoundComponent.vue';
 
 Vue.use(Router);
 
@@ -29,7 +29,7 @@ export default new Router({
     {
       path: '/users',
       name: 'users',
-      component: Users
+      component: Users,
     },
     {
       path: '/users/:id',
@@ -38,17 +38,17 @@ export default new Router({
       children: [
         {
           path: 'tags',
-          component: Tags
+          component: Tags,
         },
         {
           path: 'questions',
-          component: Questions
-        }
-      ]
+          component: Questions,
+        },
+      ],
     },
     {
       path: '*',
-      component: NotFoundComponent
-    }
+      component: NotFoundComponent,
+    },
   ],
 });
