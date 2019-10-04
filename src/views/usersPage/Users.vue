@@ -1,8 +1,5 @@
-<template>
-  <div class="users">
-    <h1>This is the page wit users list.</h1>
-  </div>
-</template>
+<template src="./template.html"></template>
+<style lang="scss" src="./style.scss"></style>
 
 <script>
 import userService from "@/services/users";
@@ -11,7 +8,7 @@ export default {
   name: "users",
   data() {
     return {
-      loading: false,
+      isLoading: false,
       users: []
     };
   },
@@ -20,14 +17,14 @@ export default {
   },
   methods: {
     getUsers() {
-      this.loading = true;
+      this.isLoading = true;
       userService.getUsers
         .then(response => {
-          this.loading = false;
+          this.isLoading = false;
           this.users = response.data;
         })
         .catch(error => {
-          this.loading = false;
+          this.isLoading = false;
           console.log(error);
         });
     }
