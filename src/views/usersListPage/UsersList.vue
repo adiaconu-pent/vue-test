@@ -2,36 +2,41 @@
 <style lang="scss" src="./style.scss"></style>
 
 <script>
-import userService from "@/services/api/users";
 import UsersListItem from "./usersListItem/UsersListItem.vue";
-import { getAlertError } from "@/services/commonFunctions.js";
+import CustomFilter from "@/components/customFilter/CustomFilter.vue";
+import userService from "@/services/api/users";
+import getAlertError from "@/services/commonFunctions.js";
 import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from "@/constants/constants";
 
 export default {
   name: "users-list",
-  components: { UsersListItem },
+  components: { UsersListItem, CustomFilter },
   data() {
     return {
       isLoading: false,
       users: [],
       currentPage: 1,
       totalPages: 0,
-      error: ""
+      error: "",
+      selectedFilter: ""
     };
   },
   watch: {
     currentPage: function() {
       this.getUsers();
+    },
+    selectedFilter: function() {
+      this.getUsers(this.selectedFilter);
     }
   },
   created() {
     this.getUsers();
   },
   methods: {
-    getUsers() {
+    getUsers(sort) {
       this.isLoading = true;
       userService
-        .getUsers(this.currentPage)
+        .getUsers(this.currentPage, sort)
         .then(response => {
           this.isLoading = false;
           this.totalPages = Math.ceil(
@@ -44,6 +49,9 @@ export default {
           this.error = getAlertError(error);
           console.log(error);
         });
+    },
+    selectFilter(filter) {
+      this.selectedFilter = filter;
     }
   }
 };

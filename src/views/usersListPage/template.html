@@ -1,4 +1,6 @@
 <div class="users">
+    <p class="display-1">Users</p>
+    <custom-filter @updateParentFilter="selectFilter" />
     <v-alert v-if="error" type="error">{{error}}</v-alert>
     <v-text-field v-if="isLoading" color="success" loading disabled></v-text-field>
     <div v-if="users">

@@ -1,0 +1,14 @@
+<v-list>
+    <v-list-item v-for="filter in userFilter">
+        <v-list-item-content>
+            <v-list-item-title v-html="filter.label"></v-list-item-title>
+            <div v-if="filter.subLabels">
+                <v-btn-toggle v-model="selectedFilter" tile color="deep-purple accent-3" group>
+                    <v-btn v-for="subFilter in filter.subLabels" :value="subFilter.value">
+                        {{subFilter.label}}
+                    </v-btn>
+                </v-btn-toggle>
+            </div>
+        </v-list-item-content>
+    </v-list-item>
+</v-list>
