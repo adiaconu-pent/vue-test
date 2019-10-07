@@ -1,18 +1,26 @@
 <template src="./template.html"></template>
 
 <script>
-import userFilter from "@/constants/filters";
-
 export default {
   data() {
     return {
-      userFilter,
       selectedFilter: ""
     };
   },
+  computed: {
+    nestedFilter() {
+      return this.filters.filter(el => el.subLabels);
+    }
+  },
+  props: {
+    filters: Array
+  },
+  created() {
+    this.selectedFilter = this.$store.state.curentUserFilter;
+  },
   watch: {
     selectedFilter: function() {
-      this.$emit("updateParentFilter", this.selectedFilter);
+      this.$store.commit("changeUserFIlter", this.selectedFilter);
     }
   }
 };

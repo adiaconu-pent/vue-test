@@ -1,6 +1,7 @@
 const userFilter = [
   {
     label: 'Reputation',
+    value: 'reputation_change_week',
     subLabels: [
       {
         label: 'week',

@@ -1,14 +1,10 @@
-<v-list>
-    <v-list-item v-for="filter in userFilter">
-        <v-list-item-content>
-            <v-list-item-title v-html="filter.label"></v-list-item-title>
-            <div v-if="filter.subLabels">
-                <v-btn-toggle v-model="selectedFilter" tile color="deep-purple accent-3" group>
-                    <v-btn v-for="subFilter in filter.subLabels" :value="subFilter.value">
-                        {{subFilter.label}}
-                    </v-btn>
-                </v-btn-toggle>
-            </div>
-        </v-list-item-content>
-    </v-list-item>
-</v-list>
+<v-tabs v-model="selectedFilter">
+    <v-tab v-for="filter in filters" :key="filter.label" :href="`#tab-${filter.label}`">{{filter.label}}</v-tab>
+    <v-tab-item v-for="nestedFilter in nestedFilter" :key="nestedFilter.label" :value="'tab-' + nestedFilter.label">
+        <v-btn-toggle tile color="deep-purple accent-3" group>
+            <v-btn v-for="subFilter in nestedFilter.subLabels" :value="subFilter.value">
+                {{subFilter.label}}
+            </v-btn>
+        </v-btn-toggle>
+    </v-tab-item>
+</v-tabs>

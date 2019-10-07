@@ -5,6 +5,7 @@
 import UsersListItem from "./usersListItem/UsersListItem.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
 import userService from "@/services/api/users";
+import userFilter from "@/constants/filters";
 import getAlertError from "@/services/commonFunctions.js";
 import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from "@/constants/constants";
 
@@ -18,25 +19,30 @@ export default {
       currentPage: 1,
       totalPages: 0,
       error: "",
-      selectedFilter: ""
+      userFilter
     };
+  },
+  computed: {
+    curentUserFilter() {
+      return this.$store.state.curentUserFilter;
+    }
   },
   watch: {
     currentPage: function() {
       this.getUsers();
     },
-    selectedFilter: function() {
-      this.getUsers(this.selectedFilter);
+    curentUserFilter: function() {
+      this.getUsers();
     }
   },
   created() {
     this.getUsers();
   },
   methods: {
-    getUsers(sort) {
+    getUsers() {
       this.isLoading = true;
       userService
-        .getUsers(this.currentPage, sort)
+        .getUsers(this.currentPage, this.curentUserFilter)
         .then(response => {
           this.isLoading = false;
           this.totalPages = Math.ceil(
@@ -49,9 +55,6 @@ export default {
           this.error = getAlertError(error);
           console.log(error);
         });
-    },
-    selectFilter(filter) {
-      this.selectedFilter = filter;
     }
   }
 };
