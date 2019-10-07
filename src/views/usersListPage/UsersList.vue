@@ -5,6 +5,7 @@
 import userService from "@/services/api/users";
 import UsersListItem from "./usersListItem/UsersListItem.vue";
 import { getAlertError } from "@/services/commonFunctions.js";
+import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from "@/constants/constants";
 
 export default {
   name: "users-list",
@@ -13,12 +14,17 @@ export default {
     return {
       isLoading: false,
       users: [],
-      currentPage: this.$route.query._page,
+      currentPage: 1,
+      totalPages: 0,
       error: ""
     };
   },
+  watch: {
+    currentPage: function() {
+      this.getUsers();
+    }
+  },
   created() {
-    console.log(this.$store.state.user);
     this.getUsers();
   },
   methods: {
@@ -28,6 +34,9 @@ export default {
         .getUsers(this.currentPage)
         .then(response => {
           this.isLoading = false;
+          this.totalPages = Math.ceil(
+            response.headers[HEADEER_TOTAL_COUNT] / ITEMS_PER_PAGE
+          );
           this.users = response.data;
         })
         .catch(error => {
