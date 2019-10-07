@@ -1,5 +1,13 @@
 <div class="users">
+    <v-alert v-if="error" type="error">{{error}}</v-alert>
+    <v-text-field v-if="isLoading" color="success" loading disabled></v-text-field>
     <v-list three-line avatar>
-        <users-list-item v-for="user in users" :user="user" :key="user.id" />
+        <v-container>
+            <v-row>
+                <v-col cols="12" md="3" sm="4" v-for="user in users" :key="user.id">
+                    <users-list-item :user="user" />
+                </v-col>
+            </v-row>
+        </v-container>
     </v-list>
 </div>

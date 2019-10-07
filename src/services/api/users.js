@@ -2,5 +2,5 @@ import instance from './base';
 
 const resource = '/users';
 export default {
-  getUsers: instance.get(`${resource}`),
+  getUsers: page => instance.get(`${resource}?_page=${page}`),
 };
