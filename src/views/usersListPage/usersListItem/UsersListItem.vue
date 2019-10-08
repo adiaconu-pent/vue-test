@@ -1,6 +1,7 @@
 <template src="./template.html"></template>
 
 <script>
+import { userFields } from "@/constants/fields";
 export default {
   name: "users-list-item",
   components: {},
@@ -12,9 +13,13 @@ export default {
   },
   computed: {
     subtitle: function() {
-      return `<p>${this.user.location || ""} <span class='text--primary'> ${
-        this.user.reputation_change_week
-      }</span></p>`;
+      const { curentUserSort } = this.$store.state;
+      const subtitle =
+        curentUserSort == userFields.CREATION_DATE
+          ? this.user.reputation
+          : this.user[this.$store.state.curentUserSort];
+      return `<p>${this.user.location ||
+        ""} <span class='text--primary'> ${subtitle}</span></p>`;
     }
   }
 };
