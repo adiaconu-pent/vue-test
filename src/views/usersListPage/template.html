@@ -3,7 +3,8 @@
     <v-alert v-if="error" type="error">{{error}}</v-alert>
     <v-text-field v-if="isLoading" color="success" loading disabled></v-text-field>
     <div v-if="users.length">
-        <custom-filter @updateUserPage="updateCurrentPage" :filters="userFilter" />
+        <custom-filter @updateParentPage="updateCurrentPage" @updateParentFilter="updateCurrentFilter"
+            :filters="userFilter" />
         <v-list three-line avatar>
             <v-container>
                 <v-row>

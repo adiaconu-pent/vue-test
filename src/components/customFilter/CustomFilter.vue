@@ -9,15 +9,8 @@ export default {
   data() {
     return {
       selectedFilter: "",
-      currentTab: "tab-reputation",
-      curentQuery: ""
+      currentTab: "tab-reputation"
     };
-  },
-  computed: {
-    nestedFilters() {
-      return this.filters.filter(el => el.subLabels);
-    },
-    ...mapState(["userQuery", "paginationQuery"])
   },
   props: {
     filters: Array
@@ -25,22 +18,16 @@ export default {
   created() {
     this.selectedFilter = this.$store.state.curentUserSort;
   },
-  watch: {
-    selectedFilter: function() {
-      let query = `&_sort=${this.selectedFilter}`;
-      if (this.currentTab != "tab-reputation") {
-        query += `&creation_date_gte=${getFirstMothInt()}`;
-      }
-      this.$store.commit(SET_USER_SORT, this.selectedFilter);
-      this.$store.dispatch("UPDATE_USER_FILTER", query);
-    }
-  },
   methods: {
     updateFilter($event) {
       this.selectedFilter = $event;
+      this.$emit("updateParentFilter", {
+        filter: this.selectedFilter,
+        currentTab: this.currentTab
+      });
     },
     updateTab($event) {
-      this.$emit("updateUserPage", 1);
+      this.$emit("updateParentPage", 1);
       this.currentTab = $event;
     }
   }

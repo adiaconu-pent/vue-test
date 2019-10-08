@@ -11,7 +11,7 @@ export default new Vuex.Store({
     error: '',
     curentUserSort: 'reputation_change_week',
     paginationQuery: '?_page=1&_limit=20',
-    userQuery: '',
+    userQuery: '&_sort=reputation_change_week',
     totalPages: 0,
   },
   mutations,
