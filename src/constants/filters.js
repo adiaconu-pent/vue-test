@@ -1,7 +1,7 @@
 const userFilter = [
   {
     label: 'Reputation',
-    value: 'reputation_change_week',
+    value: 'reputation',
     subLabels: [
       {
         label: 'week',
@@ -27,7 +27,17 @@ const userFilter = [
   },
   {
     label: 'New users',
-    value: 'creation_date',
+    value: 'new_user',
+    subLabels: [
+      {
+        label: 'Reputation',
+        value: 'reputation',
+      },
+      {
+        label: 'Creation date',
+        value: 'creation_date',
+      },
+    ],
   },
 ];
 

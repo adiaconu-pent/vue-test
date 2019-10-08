@@ -1,9 +1,9 @@
 <div class="users">
     <p class="display-1">Users</p>
-    <custom-filter :filters="userFilter" />
     <v-alert v-if="error" type="error">{{error}}</v-alert>
     <v-text-field v-if="isLoading" color="success" loading disabled></v-text-field>
-    <div v-if="users">
+    <div v-if="users.length">
+        <custom-filter @updateUserPage="updateCurrentPage" :filters="userFilter" />
         <v-list three-line avatar>
             <v-container>
                 <v-row>

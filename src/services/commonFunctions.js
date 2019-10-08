@@ -13,4 +13,10 @@ const getAlertError = (error) => {
   }
 };
 
-export default getAlertError;
+const getFirstMothInt = () => {
+  const today = new Date();
+  today.setMonth(0);
+  return Math.trunc(today.getTime() / 1000);
+};
+
+export { getAlertError, getFirstMothInt };
