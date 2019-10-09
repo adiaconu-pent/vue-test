@@ -19,14 +19,14 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue'),
-    },
-    {
       path: '/users',
       name: 'users',
       component: UserList,
+    },
+    {
+      path: '/questions',
+      name: 'questions',
+      component: () => import('./views/questionsListPage/QuestionList.vue'),
     },
     {
       path: '/users/:id',

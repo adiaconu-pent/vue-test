@@ -1,0 +1,18 @@
+<div class="questions">
+    <p class="display-1">Questions</p>
+    <v-alert v-if="error" type="error">{{error}}</v-alert>
+    <v-text-field v-if="isLoading" color="success" loading disabled></v-text-field>
+    <div v-if="questions.questions.length">
+        <!-- <custom-filter @updateUserPage="updateCurrentPage" :filters="userFilter" /> -->
+        <v-list three-line avatar>
+            <v-container>
+                <v-row>
+                    <v-col cols="12" md="3" sm="4" v-for="question in questions.questions" :key="question.id">
+                        <p v-html="question.title"></p>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-list>
+        <v-pagination v-model="currentPage" :length="totalPages"></v-pagination>
+    </div>
+</div>
