@@ -6,10 +6,10 @@ import { getAlertError } from '@/services/commonFunctions';
 import { SET_IS_LOADING, SET_TOTAL_PAGES, SET_ERROR } from '@/store/mutation-types';
 
 export default {
-  [GET_QUESTIONS]: async ({ rootState, commit }) => {
+  [GET_QUESTIONS]: async ({ rootState, commit, state }) => {
     commit(SET_IS_LOADING, true, { root: true });
     questionService
-      .getQuestions(`${rootState.paginationQuery}${rootState.userQuery}`)
+      .getQuestions(`${rootState.paginationQuery}${state.questionsQuery}`)
       .then((response) => {
         const totalPages = Math.ceil(response.headers[HEADEER_TOTAL_COUNT] / ITEMS_PER_PAGE);
         commit(SET_TOTAL_PAGES, totalPages, { root: true });

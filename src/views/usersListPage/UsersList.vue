@@ -7,16 +7,12 @@ import UsersListItem from "./usersListItem/UsersListItem.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
 import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import userService from "@/services/api/users";
-import userFilter from "@/constants/filters";
+import { userFilter } from "@/constants/filters";
 import { getAlertError } from "@/services/commonFunctions.js";
 import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from "@/constants/constants";
 import { getFirstMothInt } from "@/services/commonFunctions";
-import { SET_USER_SORT } from "@/store/mutation-types";
-import {
-  UPDATE_USER_FILTER,
-  UPDATE_PAGINATION_FILTER,
-  GET_USER
-} from "@/store/action-types";
+import { SET_USER_SORT, SET_PAGINATION_FILTER } from "@/store/mutation-types";
+import { UPDATE_USER_FILTER, GET_USER } from "@/store/action-types";
 
 export default {
   name: "users-list",
@@ -31,12 +27,14 @@ export default {
     ...mapState(["users", "error", "totalPages", "isLoading"])
   },
   methods: {
-    updateCurrentPage(page) {
-      this.currentPage = page;
-      this.$store.dispatch(
-        UPDATE_PAGINATION_FILTER,
+    updateCurrentPage(data) {
+      const { page } = data;
+      if (this.currentPage !== page) this.currentPage = page;
+      this.$store.commit(
+        SET_PAGINATION_FILTER,
         `?_page=${this.currentPage}&_limit=20`
       );
+      this.$store.dispatch(GET_USER);
     },
     updateCurrentFilter({ filter, currentTab }) {
       let query = `&_sort=${filter}`;
@@ -47,12 +45,12 @@ export default {
       this.$store.dispatch(UPDATE_USER_FILTER, query);
     }
   },
-  created() {
-    this.$store.dispatch(GET_USER);
-  },
   watch: {
-    currentPage: function() {
-      this.updateCurrentPage(this.currentPage);
+    currentPage: {
+      immediate: true,
+      handler() {
+        this.updateCurrentPage({ page: this.currentPage });
+      }
     }
   }
 };

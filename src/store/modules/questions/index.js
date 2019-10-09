@@ -5,6 +5,7 @@ export default {
   namespaced: true,
   state: {
     questions: [],
+    questionsQuery: '&_sort=score',
   },
   actions,
   mutations,

@@ -1,8 +1,8 @@
 <div class="users">
     <component-layout title="Users" :error="error" :isLoading="isLoading">
+        <custom-filter defaultTab="tab-reputation" @updateParentSort="updateCurrentPage"
+            @updateParentFilter="updateCurrentFilter" :filters="userFilter" />
         <div v-if="users.length && !isLoading">
-            <custom-filter @updateParentPage="updateCurrentPage" @updateParentFilter="updateCurrentFilter"
-                :filters="userFilter" />
             <v-list three-line avatar>
                 <v-container>
                     <v-row>

@@ -41,4 +41,19 @@ const userFilter = [
   },
 ];
 
-export default userFilter;
+const questionFilters = [
+  {
+    label: 'Popular',
+    value: 'score',
+  },
+  {
+    label: 'Name',
+    value: 'title',
+  },
+  {
+    label: 'New',
+    value: 'creation_date',
+  },
+];
+
+export { userFilter, questionFilters };

@@ -9,11 +9,12 @@ export default {
   data() {
     return {
       selectedFilter: "",
-      currentTab: "tab-reputation"
+      currentTab: this.defaultTab
     };
   },
   props: {
-    filters: Array
+    filters: Array,
+    defaultTab: String
   },
   created() {
     this.selectedFilter = this.$store.state.curentUserSort;
@@ -27,8 +28,11 @@ export default {
       });
     },
     updateTab($event) {
-      this.$emit("updateParentPage", 1);
       this.currentTab = $event;
+      this.$emit("updateParentSort", {
+        page: 1,
+        sort: $event
+      });
     }
   }
 };
