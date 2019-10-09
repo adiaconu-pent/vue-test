@@ -28,8 +28,6 @@ export default {
   },
   methods: {
     updateCurrentPage(data) {
-      const { page } = data;
-      if (this.currentPage !== page) this.currentPage = page;
       this.$store.commit(
         SET_PAGINATION_FILTER,
         `?_page=${this.currentPage}&_limit=20`
