@@ -33,6 +33,7 @@ export default {
         page: 1,
         sort: $event
       });
+      this.selectedFilter = this.$store.state.curentUserSort;
     }
   }
 };

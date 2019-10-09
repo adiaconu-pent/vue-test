@@ -34,13 +34,13 @@ export default {
     },
     updateSort(data) {
       const { page, sort } = data;
-      if (this.currentPage !== page) this.currentPage = page;
       this.$store.commit(
         SET_PAGINATION_FILTER,
         `?_page=${this.currentPage}&_limit=20`,
         { root: true }
       );
       this.SET_QUESTION_QUERY(`&_sort=${sort.split("tab-")[1]}`);
+      this.GET_QUESTIONS();
     }
   },
   watch: {
