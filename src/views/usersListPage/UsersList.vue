@@ -22,13 +22,12 @@ export default {
   components: { UsersListItem, CustomFilter },
   data() {
     return {
-      isLoading: false,
       userFilter,
       currentPage: 1
     };
   },
   computed: {
-    ...mapState(["users", "error", "totalPages"])
+    ...mapState(["users", "error", "totalPages", "isLoading"])
   },
   methods: {
     updateCurrentPage(page) {

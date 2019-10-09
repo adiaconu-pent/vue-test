@@ -13,6 +13,7 @@ export default new Vuex.Store({
     paginationQuery: '?_page=1&_limit=20',
     userQuery: '&_sort=reputation_change_week',
     totalPages: 0,
+    isLoading: false,
   },
   mutations,
   actions,
