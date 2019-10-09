@@ -5,6 +5,7 @@
 import { mapState } from "vuex";
 import UsersListItem from "./usersListItem/UsersListItem.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
+import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import userService from "@/services/api/users";
 import userFilter from "@/constants/filters";
 import { getAlertError } from "@/services/commonFunctions.js";
@@ -19,7 +20,7 @@ import {
 
 export default {
   name: "users-list",
-  components: { UsersListItem, CustomFilter },
+  components: { UsersListItem, CustomFilter, ComponentLayout },
   data() {
     return {
       userFilter,

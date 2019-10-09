@@ -3,10 +3,11 @@
 <script>
 import { GET_QUESTIONS } from "@/store/modules/questions/action-types";
 import { mapState, mapActions } from "vuex";
+import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 
 export default {
   name: "questions-list",
-  // components: { CustomFilter },
+  components: { ComponentLayout },
   data() {
     return {
       currentPage: 1
