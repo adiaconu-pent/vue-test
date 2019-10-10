@@ -1,4 +1,5 @@
 <template src="./template.html"></template>
+<style lang="scss" src='./style.scss'></style>
 
 <script>
 import { GET_QUESTIONS } from "@/store/modules/questions/action-types";
@@ -8,10 +9,11 @@ import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
 import { questionFilters } from "@/constants/filters";
 import { SET_PAGINATION_FILTER } from "@/store/mutation-types";
+import QuestionsListItem from "./questionsListItem/QuestionsListItem.vue";
 
 export default {
   name: "questions-list",
-  components: { ComponentLayout, CustomFilter },
+  components: { ComponentLayout, CustomFilter, QuestionsListItem },
   data() {
     return {
       currentPage: 1,
@@ -34,13 +36,9 @@ export default {
     },
     updateSort(data) {
       const { page, sort } = data;
-      this.$store.commit(
-        SET_PAGINATION_FILTER,
-        `?_page=${this.currentPage}&_limit=20`,
-        { root: true }
-      );
+
       this.SET_QUESTION_QUERY(`&_sort=${sort.split("tab-")[1]}`);
-      this.GET_QUESTIONS();
+      this.updateCurrentPage();
     }
   },
   watch: {

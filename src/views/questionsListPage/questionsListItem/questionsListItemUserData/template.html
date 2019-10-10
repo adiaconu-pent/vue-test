@@ -1,0 +1,13 @@
+<div class="user-data">
+    <v-row no-gutters>
+        <v-col cols="12" sm="6">
+            <v-avatar>
+                <img :src="user.profile_image" :alt="user.display_name">
+            </v-avatar>
+        </v-col>
+        <v-col cols="12" sm="6">
+            <p>{{user.display_name}}</p>
+            <p>{{user.reputation}}</p>
+        </v-col>
+    </v-row>
+</div>

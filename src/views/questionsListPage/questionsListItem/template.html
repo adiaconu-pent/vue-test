@@ -1,0 +1,20 @@
+<v-card max-height="250" class="mx-auto question-card">
+    <v-row no-gutters>
+        <v-col cols="12" sm="2" class="statistic-data">
+            <QuestionsListItemStatistics :votes="question.score" :answers="question.answer_count"
+                :views="question.view_count" />
+        </v-col>
+        <v-col cols="12" sm="8">
+            <v-card-title v-html="question.title">
+            </v-card-title>
+            <v-card-text v-html="question.body" class="question-body"></v-card-text>
+            <v-chip v-for="tag in question.tags">{{tag}}</v-chip>
+        </v-col>
+        <v-col cols="12" sm="2">
+            <div>
+                <p>asked on {{getDateFromInt(question.creation_date)}}</p>
+            </div>
+            <QuestionsListItemUserData :user="question.owner" />
+        </v-col>
+    </v-row>
+</v-card>

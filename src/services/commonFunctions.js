@@ -19,4 +19,6 @@ const getFirstMothInt = () => {
   return Math.trunc(today.getTime() / 1000);
 };
 
-export { getAlertError, getFirstMothInt };
+const getDateFromInt = date => new Date(date * 1000).toLocaleDateString();
+
+export { getAlertError, getFirstMothInt, getDateFromInt };

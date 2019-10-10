@@ -3,13 +3,7 @@
         <div v-if="questions.questions.length">
             <custom-filter defaultTab="tab-score" @updateParentSort="updateSort" :filters="questionFilters" />
             <v-list three-line avatar>
-                <v-container>
-                    <v-row>
-                        <v-col cols="12" md="3" sm="4" v-for="question in questions.questions" :key="question.id">
-                            <p v-html="question.title"></p>
-                        </v-col>
-                    </v-row>
-                </v-container>
+                <QuestionsListItem v-for="question in questions.questions" :question="question" :key="question.id" />
             </v-list>
             <v-pagination v-model="currentPage" :length="totalPages"></v-pagination>
         </div>
