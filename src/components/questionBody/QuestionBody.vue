@@ -6,7 +6,7 @@ export default {
     title: String,
     body: String,
     tags: Array,
-    navigate: Boolean
+    navigate: String
   }
 };
 </script>

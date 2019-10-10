@@ -13,7 +13,7 @@
                 <p>asked on {{getDateFromInt(question.creation_date)}}</p>
             </div>
             <UserDetails :imageUrl="question.owner.profile_image" :name="question.owner.display_name"
-                :description="question.owner.reputation" />
+                :score="question.owner.reputation" />
         </v-col>
     </v-row>
 </v-card>

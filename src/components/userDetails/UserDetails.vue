@@ -6,15 +6,17 @@ export default {
   props: {
     imageUrl: {
       type: String,
-      required: true
+      required: true,
+      default: ""
     },
     name: {
       type: String,
       required: true
     },
-    description: {
-      type: String,
-      required: true
+    score: {
+      type: Number,
+      required: true,
+      default: 0
     }
   }
 };
