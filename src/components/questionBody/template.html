@@ -1,6 +1,6 @@
 <div>
     <v-card-title v-if="navigate">
-        <router-link :to="{ path: `${navigate}` }">{{title}}</router-link>
+        <router-link v-html="title" :to="{ path: `${navigate}` }"></router-link>
     </v-card-title>
     <v-card-text v-html="body" class="question-body"></v-card-text>
     <v-chip v-for="tag in tags" :key="tag">{{tag}}</v-chip>

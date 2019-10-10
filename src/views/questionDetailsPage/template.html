@@ -1,7 +1,7 @@
 <v-card>
     <ComponentLayout :error="error" :isLoading="isLoading" />
     <div v-if="data">
-        <p class="display-1">{{data.title}}</p>
+        <p v-html="data.title" class="display-1"></p>
         <p>Asked <span>{{getDateFromInt(data.creation_date)}}</span> Active
             <span>{{getDateFromInt(data.last_activity_date)}}</span> Viewed <span>{{data.view_count}} times</span></p>
         <v-divider></v-divider>
