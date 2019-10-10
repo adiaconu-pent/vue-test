@@ -3,9 +3,9 @@
 
 <script>
 import { getDateFromInt } from "@/services/commonFunctions";
-import QuestionsListItemUserData from "./questionsListItemUserData/QuestionsListItemUserData.vue";
 import QuestionsListItemStatistics from "./questionsListItemStatistics/QuestionsListItemStatistics.vue";
 import QuestionBody from "@/components/questionBody/QuestionBody.vue";
+import UserDetails from "@/components/userDetails/UserDetails.vue";
 export default {
   props: {
     question: {
@@ -14,9 +14,9 @@ export default {
     }
   },
   components: {
-    QuestionsListItemUserData,
     QuestionsListItemStatistics,
-    QuestionBody
+    QuestionBody,
+    UserDetails
   },
   methods: {
     getDateFromInt

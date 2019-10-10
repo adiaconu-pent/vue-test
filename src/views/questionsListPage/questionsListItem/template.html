@@ -6,13 +6,14 @@
         </v-col>
         <v-col cols="12" sm="8">
             <QuestionBody :title="question.title" :navigate="`/questions/${question.id}`" :body="question.body"
-                tags="question.tags" />
+                :tags="question.tags" />
         </v-col>
         <v-col cols="12" sm="2">
             <div>
                 <p>asked on {{getDateFromInt(question.creation_date)}}</p>
             </div>
-            <QuestionsListItemUserData :user="question.owner" />
+            <UserDetails :imageUrl="question.owner.profile_image" :name="question.owner.display_name"
+                :description="question.owner.reputation" />
         </v-col>
     </v-row>
 </v-card>

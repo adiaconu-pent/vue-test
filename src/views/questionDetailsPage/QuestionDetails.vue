@@ -6,6 +6,7 @@ import questionService from "@/services/api/questions";
 import { getAlertError } from "@/services/commonFunctions";
 import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import QuestionBody from "@/components/questionBody/QuestionBody.vue";
+import UserDetails from "@/components/userDetails/UserDetails.vue";
 import { getDateFromInt } from "@/services/commonFunctions";
 export default {
   data() {
@@ -15,7 +16,7 @@ export default {
       error: ""
     };
   },
-  components: { ComponentLayout, QuestionBody },
+  components: { ComponentLayout, QuestionBody, UserDetails },
   methods: {
     async getQuestionDetails() {
       this.isLoading = true;

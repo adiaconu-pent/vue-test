@@ -3,5 +3,5 @@
         <router-link :to="{ path: `${navigate}` }">{{title}}</router-link>
     </v-card-title>
     <v-card-text v-html="body" class="question-body"></v-card-text>
-    <v-chip v-for="tag in tags">{{tag}}</v-chip>
+    <v-chip v-for="tag in tags" :key="tag">{{tag}}</v-chip>
 </div>
