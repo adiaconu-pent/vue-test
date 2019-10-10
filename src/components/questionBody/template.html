@@ -1,0 +1,7 @@
+<div>
+    <v-card-title v-if="navigate">
+        <router-link :to="{ path: `${navigate}` }">{{title}}</router-link>
+    </v-card-title>
+    <v-card-text v-html="body" class="question-body"></v-card-text>
+    <v-chip v-for="tag in tags">{{tag}}</v-chip>
+</div>

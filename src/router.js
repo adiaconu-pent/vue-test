@@ -6,6 +6,7 @@ import Questions from './views/Questions.vue';
 import Tags from './views/Tags.vue';
 import Home from './views/Home.vue';
 import NotFoundComponent from './components/NotFoundComponent.vue';
+import QuestionDetails from './views/questionDetailsPage/QuestionDetails.vue';
 
 Vue.use(Router);
 
@@ -27,6 +28,10 @@ export default new Router({
       path: '/questions',
       name: 'questions',
       component: () => import('./views/questionsListPage/QuestionList.vue'),
+    },
+    {
+      path: '/questions/:id',
+      component: QuestionDetails,
     },
     {
       path: '/users/:id',

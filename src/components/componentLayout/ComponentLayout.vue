@@ -4,8 +4,7 @@
 export default {
   props: {
     title: {
-      type: String,
-      required: true
+      type: String
     },
     error: String,
     isLoading: Boolean

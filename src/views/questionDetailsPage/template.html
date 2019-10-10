@@ -1,0 +1,17 @@
+<div>
+    <ComponentLayout :error="error" :isLoading="isLoading" />
+    <div v-if="data">
+        <p>{{data.title}}</p>
+        <p>Asked <span>{{getDateFromInt(data.creation_date)}}</span> Active
+            <span>{{getDateFromInt(data.last_activity_date)}}</span> Viewed <span>{{data.view_count}} times</span></p>
+        <v-divider></v-divider>
+    </div>
+    <v-row>
+        <v-col cols="12" md="2">
+            <p>{{data.score}}</p>
+        </v-col>
+        <v-col cols="12" md="10">
+            <QuestionBody :title="data.title" :body="data.body" :tags="data.tags" />
+        </v-col>
+    </v-row>
+</div>

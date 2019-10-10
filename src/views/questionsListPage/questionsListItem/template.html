@@ -5,10 +5,8 @@
                 :views="question.view_count" />
         </v-col>
         <v-col cols="12" sm="8">
-            <v-card-title v-html="question.title">
-            </v-card-title>
-            <v-card-text v-html="question.body" class="question-body"></v-card-text>
-            <v-chip v-for="tag in question.tags">{{tag}}</v-chip>
+            <QuestionBody :title="question.title" :navigate="`/questions/${question.id}`" :body="question.body"
+                tags="question.tags" />
         </v-col>
         <v-col cols="12" sm="2">
             <div>
