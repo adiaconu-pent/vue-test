@@ -1,11 +1,18 @@
-<v-form v-model="valid">
-    <v-container>
-        <v-row>
-            <v-col cols="12" md="12">
-                <v-textarea solo name="input-7-4" v-model="body" :rules="bodyRules" :counter="10"
-                    label="Type your answer" required></v-textarea>
-                </v-text-field>
-            </v-col>
-        </v-row>
-    </v-container>
-</v-form>
+<ValidationObserver v-slot="{ passes }">
+    <v-form @submit.prevent="passes(submit)" class="form">
+        <v-container>
+            <v-row>
+                <v-col cols="12" md="12">
+                    <ValidationProvider name="Question" rules="required|minVal:20" v-slot="{ errors }">
+                        <div class="field">
+                            <v-textarea solo v-model="body" label="Type your question"></v-textarea>
+                            </v-text-field>
+                            <span>{{ errors[0] }}</span>
+                        </div>
+                    </ValidationProvider>
+                    <v-btn type="submit" small>Post</v-btn>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-form>
+</ValidationObserver>
