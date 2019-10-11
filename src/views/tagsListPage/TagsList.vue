@@ -47,7 +47,6 @@ export default {
       }
     },
     searchedText: function() {
-      const filter = this.tags.tagsQuery.split("&_sort=")[1];
       this.UPDATE_TAG_QUERY(
         `&sort=${this.tags.tagsSort}&name_like=${this.searchedText}`
       );

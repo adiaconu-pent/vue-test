@@ -1,12 +1,15 @@
 import userService from '@/services/api/users';
 import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from '@/constants/constants';
-import { GET_USER, UPDATE_USER_FILTER } from './action-types';
+import {
+  GET_USER, UPDATE_USER_FILTER, UPDATE_USER_SORT, UPDATE_USER_QUERY,
+} from './action-types';
 import {
   SET_USER,
   SET_USER_QUERY,
   SET_TOTAL_PAGES,
   SET_ERROR,
   SET_IS_LOADING,
+  SET_USER_SORT,
 } from './mutation-types';
 import { getAlertError } from '@/services/commonFunctions';
 
@@ -29,5 +32,8 @@ export default {
   [UPDATE_USER_FILTER]: async (context, payload) => {
     context.commit(SET_USER_QUERY, payload);
     context.dispatch(GET_USER);
+  },
+  [UPDATE_USER_SORT]: (context, payload) => {
+    context.commit(SET_USER_SORT, payload);
   },
 };
