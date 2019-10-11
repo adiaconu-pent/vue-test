@@ -12,14 +12,15 @@ export default {
   data() {
     return {
       currentPage: 1,
-      tagsFilters
+      tagsFilters,
+      searchedText: ""
     };
   },
   computed: {
     ...mapState(["tags", "error", "totalPages", "isLoading"])
   },
   methods: {
-    ...mapActions("tags", ["GET_TAGS", "UPDATE_TAG_QUERY"]),
+    ...mapActions("tags", ["GET_TAGS", "UPDATE_TAG_QUERY", "UPDATE_TAG_SORT"]),
     updateCurrentPage() {
       this.$store.commit(
         SET_PAGINATION_FILTER,
@@ -30,8 +31,11 @@ export default {
     },
     updateSort(data) {
       const { page, sort } = data;
-
-      this.UPDATE_TAG_QUERY(`&_sort=${sort.split("tab-")[1]}`);
+      const currentSort = sort.split("tab-")[1];
+      this.UPDATE_TAG_QUERY(
+        `&_sort=${currentSort}&name_like=${this.searchedText}`
+      );
+      this.UPDATE_TAG_SORT(currentSort);
       this.updateCurrentPage();
     }
   },
@@ -41,6 +45,13 @@ export default {
       handler() {
         this.updateCurrentPage();
       }
+    },
+    searchedText: function() {
+      const filter = this.tags.tagsQuery.split("&_sort=")[1];
+      this.UPDATE_TAG_QUERY(
+        `&sort=${this.tags.tagsSort}&name_like=${this.searchedText}`
+      );
+      this.updateCurrentPage();
     }
   }
 };

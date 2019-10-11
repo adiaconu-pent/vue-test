@@ -1,7 +1,7 @@
 import tagService from '@/services/api/tags';
 import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from '@/constants/constants';
-import { GET_TAGS, UPDATE_TAG_QUERY } from './action-types';
-import { SET_TAGS, SET_TAG_QUERY } from './mutation-types';
+import { GET_TAGS, UPDATE_TAG_QUERY, UPDATE_TAG_SORT } from './action-types';
+import { SET_TAGS, SET_TAG_QUERY, SET_TAG_SORT } from './mutation-types';
 import { getAlertError } from '@/services/commonFunctions';
 import { SET_IS_LOADING, SET_TOTAL_PAGES, SET_ERROR } from '@/store/mutation-types';
 
@@ -23,5 +23,8 @@ export default {
   },
   [UPDATE_TAG_QUERY]: (context, payload) => {
     context.commit(SET_TAG_QUERY, payload);
+  },
+  [UPDATE_TAG_SORT]: (context, payload) => {
+    context.commit(SET_TAG_SORT, payload);
   },
 };

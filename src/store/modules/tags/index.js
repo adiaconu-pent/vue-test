@@ -6,6 +6,7 @@ export default {
   state: {
     tags: [],
     tagsQuery: '&_sort=count',
+    tagsSort: 'count',
   },
   actions,
   mutations,

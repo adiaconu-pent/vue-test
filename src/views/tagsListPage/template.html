@@ -1,6 +1,8 @@
 <div class="questions">
     <component-layout title="Tags" :error="error" :isLoading="isLoading">
         <div v-if="tags.tags.length">
+            <v-text-field v-model="searchedText" placeholder="Search by name">
+            </v-text-field>
             <custom-filter defaultTab="tab-count" @updateParentSort="updateSort" :filters="tagsFilters" />
             <v-list three-line avatar>
                 <div v-for="tag in tags.tags" :key="tag.name">
