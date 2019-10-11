@@ -7,13 +7,20 @@ export default {
   data() {
     return {
       valid: false,
-      body: ""
+      body: "",
+      title: ""
     };
   },
   components: { ValidationObserver, ValidationProvider },
   methods: {
     submit() {
-      console.log("Submitting to server!");
+      this.$emit("submitQuestion", { body: this.body, title: this.title });
+      this.resetForm();
+    },
+    resetForm() {
+      this.$refs.formObserver.reset();
+      this.body = "";
+      this.title = "";
     }
   }
 };

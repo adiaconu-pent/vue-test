@@ -13,12 +13,16 @@ const getAlertError = (error) => {
   }
 };
 
+const getDateInt = date => Math.trunc(date.getTime() / 1000);
+
 const getFirstMothInt = () => {
   const today = new Date();
   today.setMonth(0);
-  return Math.trunc(today.getTime() / 1000);
+  getDateInt(today);
 };
 
 const getDateFromInt = date => new Date(date * 1000).toLocaleDateString();
 
-export { getAlertError, getFirstMothInt, getDateFromInt };
+export {
+  getAlertError, getFirstMothInt, getDateFromInt, getDateInt,
+};

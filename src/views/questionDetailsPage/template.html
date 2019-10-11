@@ -3,7 +3,8 @@
     <div v-if="data">
         <p v-html="data.title" class="display-1"></p>
         <p>Asked <span>{{getDateFromInt(data.creation_date)}}</span> Active
-            <span>{{getDateFromInt(data.last_activity_date)}}</span> Viewed <span>{{data.view_count}} times</span></p>
+            <span>{{getDateFromInt(data.last_activity_date)}}</span> Viewed <span>{{data.view_count || 0}} times</span>
+        </p>
         <v-divider></v-divider>
         <v-row>
             <v-col cols="12" md="2">

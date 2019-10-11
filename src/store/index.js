@@ -15,6 +15,12 @@ export default new Vuex.Store({
     userQuery: '&_sort=reputation_change_week',
     totalPages: 0,
     isLoading: false,
+    owner: {
+      reputation: 696,
+      user_id: 1283198,
+      profile_image: 'https://i.stack.imgur.com/vIM81.jpg?s=128&g=1',
+      display_name: 'Prasaathviki',
+    },
   },
   mutations,
   actions,

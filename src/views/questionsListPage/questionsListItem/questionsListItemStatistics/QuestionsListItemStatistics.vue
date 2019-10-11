@@ -7,15 +7,18 @@ export default {
   props: {
     votes: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     answers: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     views: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     }
   }
 };
