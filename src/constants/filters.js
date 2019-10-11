@@ -56,4 +56,15 @@ const questionFilters = [
   },
 ];
 
-export { userFilter, questionFilters };
+const tagsFilters = [
+  {
+    label: 'Popular',
+    value: 'count',
+  },
+  {
+    label: 'Name',
+    value: 'name',
+  },
+];
+
+export { userFilter, questionFilters, tagsFilters };

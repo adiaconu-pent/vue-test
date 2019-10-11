@@ -1,0 +1,14 @@
+<div class="questions">
+    <component-layout title="Tags" :error="error" :isLoading="isLoading">
+        <div v-if="tags.tags.length">
+            <custom-filter defaultTab="tab-count" @updateParentSort="updateSort" :filters="tagsFilters" />
+            <v-list three-line avatar>
+                <div v-for="tag in tags.tags" :key="tag.name">
+                    <p>{{tag.name}}</p>
+                    <p>{{tag.count}}</p>
+                </div>
+            </v-list>
+            <v-pagination v-model="currentPage" :length="totalPages"></v-pagination>
+        </div>
+    </component-layout>
+</div>

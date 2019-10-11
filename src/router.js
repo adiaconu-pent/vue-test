@@ -22,6 +22,10 @@ export default new Router({
       component: () => import('./views/questionsListPage/QuestionList.vue'),
     },
     {
+      path: '/tags',
+      component: () => import('./views/tagsListPage/TagsList.vue'),
+    },
+    {
       path: '/questions/:id',
       component: QuestionDetails,
     },

@@ -1,0 +1,4 @@
+const SET_TAGS = 'SET_TAGS';
+const SET_TAG_QUERY = 'SET_TAG_QUERY';
+
+export { SET_TAGS, SET_TAG_QUERY };

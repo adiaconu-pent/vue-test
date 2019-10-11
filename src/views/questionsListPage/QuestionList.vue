@@ -7,9 +7,9 @@ import { SET_QUESTION_QUERY } from "@/store/modules/questions/mutation-types";
 import { mapState, mapActions, mapMutations } from "vuex";
 import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
+import QuestionsListItem from "./questionsListItem/QuestionsListItem.vue";
 import { questionFilters } from "@/constants/filters";
 import { SET_PAGINATION_FILTER } from "@/store/mutation-types";
-import QuestionsListItem from "./questionsListItem/QuestionsListItem.vue";
 
 export default {
   name: "questions-list",

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import actions from './actions';
 import mutations from './mutations';
 import questions from './modules/questions';
+import tags from './modules/tags';
 
 Vue.use(Vuex);
 
@@ -27,5 +28,5 @@ export default new Vuex.Store({
   getters: {
     USERS: state => state.users,
   },
-  modules: { questions },
+  modules: { questions, tags },
 });
