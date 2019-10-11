@@ -30,9 +30,7 @@ export default {
     updateSort(data) {
       const { page, sort } = data;
       const currentSort = sort.split("tab-")[1];
-      this.UPDATE_TAG_QUERY(
-        `&_sort=${currentSort}&name_like=${this.searchedText}`
-      );
+      this.UPDATE_TAG_QUERY({ currentSort, searchedText });
       this.UPDATE_TAG_SORT(currentSort);
       this.updateCurrentPage();
     }
@@ -45,9 +43,10 @@ export default {
       }
     },
     searchedText: function() {
-      this.UPDATE_TAG_QUERY(
-        `&sort=${this.tags.tagsSort}&name_like=${this.searchedText}`
-      );
+      this.UPDATE_TAG_QUERY({
+        currentSort: this.tags.tagsSort,
+        searchedText: this.searchedText
+      });
       this.updateCurrentPage();
     }
   }

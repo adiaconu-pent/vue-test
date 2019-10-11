@@ -23,6 +23,15 @@ const getFirstMothInt = () => {
 
 const getDateFromInt = date => new Date(date * 1000).toLocaleDateString();
 
+const buildSortLikeQuery = (sort, searchedField, searchedText) => `&_sort=${sort}&${searchedField}_like=${searchedText}`;
+
+const buildGraterThenQuery = (field, value) => `&${field}_gte=${value}`;
+
 export {
-  getAlertError, getFirstMothInt, getDateFromInt, getDateInt,
+  getAlertError,
+  getFirstMothInt,
+  getDateFromInt,
+  getDateInt,
+  buildSortLikeQuery,
+  buildGraterThenQuery,
 };

@@ -6,12 +6,12 @@ import { mapState } from "vuex";
 import UsersListItem from "./usersListItem/UsersListItem.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
 import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
-import userService from "@/services/api/users";
 import { userFilter } from "@/constants/filters";
-import { getAlertError } from "@/services/commonFunctions.js";
-import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from "@/constants/constants";
-import { getFirstMothInt } from "@/services/commonFunctions";
-import { SET_USER_SORT } from "@/store/mutation-types";
+import {
+  getFirstMothInt,
+  buildSortLikeQuery,
+  buildGraterThenQuery
+} from "@/services/commonFunctions";
 import {
   UPDATE_USER_FILTER,
   GET_USER,
@@ -30,7 +30,14 @@ export default {
     };
   },
   computed: {
-    ...mapState(["users", "error", "totalPages", "isLoading", "curentUserSort"])
+    ...mapState([
+      "users",
+      "error",
+      "totalPages",
+      "isLoading",
+      "curentUserSort",
+      "userQuery"
+    ])
   },
   methods: {
     updateCurrentPage(data) {
@@ -40,9 +47,9 @@ export default {
       this.$store.dispatch(GET_USER);
     },
     updateCurrentFilter({ filter, currentTab }) {
-      let query = `&_sort=${filter}&display_name_like=${this.searchedText}`;
+      let query = buildSortLikeQuery(filter, "display_name", this.searchedText);
       if (currentTab != "tab-reputation") {
-        query += `&creation_date_gte=${getFirstMothInt()}`;
+        query += buildGraterThenQuery("creation_date", getFirstMothInt());
       }
       this.$store.dispatch(UPDATE_USER_SORT, filter);
       this.$store.dispatch(UPDATE_USER_FILTER, query);
@@ -58,7 +65,11 @@ export default {
     searchedText: function() {
       this.$store.dispatch(
         UPDATE_USER_FILTER,
-        `&sort=${this.curentUserSort}&display_name_like=${this.searchedText}`
+        buildSortLikeQuery(
+          this.curentUserSort,
+          "display_name",
+          this.searchedText
+        )
       );
     }
   }

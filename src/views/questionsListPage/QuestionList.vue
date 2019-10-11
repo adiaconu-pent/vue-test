@@ -24,8 +24,7 @@ export default {
     ...mapState(["questions", "error", "totalPages", "isLoading"])
   },
   methods: {
-    ...mapActions("questions", ["GET_QUESTIONS"]),
-    ...mapMutations("questions", ["SET_QUESTION_QUERY"]),
+    ...mapActions("questions", ["GET_QUESTIONS", "UPDATE_QUESTION_QUERY"]),
     updateCurrentPage() {
       this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
         root: true
@@ -35,7 +34,7 @@ export default {
     updateSort(data) {
       const { page, sort } = data;
 
-      this.SET_QUESTION_QUERY(`&_sort=${sort.split("tab-")[1]}`);
+      this.UPDATE_QUESTION_QUERY(`&_sort=${sort.split("tab-")[1]}`);
       this.updateCurrentPage();
     }
   },
