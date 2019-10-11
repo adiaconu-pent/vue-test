@@ -18,7 +18,7 @@ const getDateInt = date => Math.trunc(date.getTime() / 1000);
 const getFirstMothInt = () => {
   const today = new Date();
   today.setMonth(0);
-  getDateInt(today);
+  return getDateInt(today);
 };
 
 const getDateFromInt = date => new Date(date * 1000).toLocaleDateString();

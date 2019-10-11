@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import UserList from './views/usersListPage/UsersList.vue';
-import Home from './views/Home.vue';
 import NotFoundComponent from './components/NotFoundComponent.vue';
 import QuestionDetails from './views/questionDetailsPage/QuestionDetails.vue';
 import AddQuestion from './views/addQuestionPage/AddQuestion.vue';
@@ -14,11 +13,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/users',
       name: 'users',
       component: UserList,
     },
