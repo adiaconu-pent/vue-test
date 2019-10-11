@@ -1,5 +1,5 @@
 <template src="./template.html"></template>
-<style lang="scss" src='./style.scss'></style>
+<style lang="scss" src='@/styles/questions.scss'></style>
 
 <script>
 import { getDateFromInt } from "@/services/commonFunctions";

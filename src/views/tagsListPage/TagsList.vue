@@ -1,4 +1,5 @@
 <template src="./template.html"></template>
+<style lang="scss" src="@/styles/tags.scss"></style>
 
 <script>
 import { mapState, mapActions } from "vuex";
@@ -30,7 +31,7 @@ export default {
     updateSort(data) {
       const { page, sort } = data;
       const currentSort = sort.split("tab-")[1];
-      this.UPDATE_TAG_QUERY({ currentSort, searchedText });
+      this.UPDATE_TAG_QUERY({ currentSort, searchedText: this.searchedText });
       this.UPDATE_TAG_SORT(currentSort);
       this.updateCurrentPage();
     }

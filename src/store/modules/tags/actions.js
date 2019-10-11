@@ -21,10 +21,10 @@ export default {
       })
       .then(() => commit(SET_IS_LOADING, false, { root: true }));
   },
-  [UPDATE_TAG_QUERY]: ({ commit }, payload) => {
-    commit(SET_TAG_QUERY, payload);
+  [UPDATE_TAG_SORT]: ({ commit }, payload) => {
+    commit(SET_TAG_SORT, payload);
   },
-  [UPDATE_TAG_SORT]: ({ commit }, { currentSort, searchedText }) => {
-    commit(SET_TAG_SORT, `&sort=${currentSort}&name_like=${searchedText}`);
+  [UPDATE_TAG_QUERY]: ({ commit }, { currentSort, searchedText }) => {
+    commit(SET_TAG_QUERY, `&_sort=${currentSort}&name_like=${searchedText}`);
   },
 };

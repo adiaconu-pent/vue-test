@@ -1,0 +1,14 @@
+@use 'base';
+
+.question-body {
+  height: 130px;
+  overflow: hidden;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+
+.question-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

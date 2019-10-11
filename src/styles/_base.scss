@@ -1,0 +1,21 @@
+$gray-color: #6a737c;
+$font-size-primary: 25px;
+$font-size-second: 12px;
+
+@mixin custom-margin($margin, $value) {
+  #{$margin}: $value;
+}
+
+.v-chip {
+  @include custom-margin(margin-right, 5px);
+}
+
+.text-primary {
+  font-size: $font-size-primary;
+  margin: 0px !important;
+}
+
+.text-second {
+  font-size: $font-size-second;
+  color: $gray-color;
+}
