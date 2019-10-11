@@ -5,7 +5,7 @@ import { mapState, mapActions } from "vuex";
 import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
 import { tagsFilters } from "@/constants/filters";
-import { SET_PAGINATION_FILTER } from "@/store/mutation-types";
+import { UPDATE_PAGIANTION_FILTER } from "@/store/action-types";
 
 export default {
   components: { ComponentLayout, CustomFilter },
@@ -22,11 +22,9 @@ export default {
   methods: {
     ...mapActions("tags", ["GET_TAGS", "UPDATE_TAG_QUERY", "UPDATE_TAG_SORT"]),
     updateCurrentPage() {
-      this.$store.commit(
-        SET_PAGINATION_FILTER,
-        `?_page=${this.currentPage}&_limit=20`,
-        { root: true }
-      );
+      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
+        root: true
+      });
       this.GET_TAGS();
     },
     updateSort(data) {

@@ -9,7 +9,7 @@ import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
 import CustomFilter from "@/components/customFilter/CustomFilter.vue";
 import QuestionsListItem from "./questionsListItem/QuestionsListItem.vue";
 import { questionFilters } from "@/constants/filters";
-import { SET_PAGINATION_FILTER } from "@/store/mutation-types";
+import { UPDATE_PAGIANTION_FILTER } from "@/store/action-types";
 
 export default {
   name: "questions-list",
@@ -27,11 +27,9 @@ export default {
     ...mapActions("questions", ["GET_QUESTIONS"]),
     ...mapMutations("questions", ["SET_QUESTION_QUERY"]),
     updateCurrentPage() {
-      this.$store.commit(
-        SET_PAGINATION_FILTER,
-        `?_page=${this.currentPage}&_limit=20`,
-        { root: true }
-      );
+      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
+        root: true
+      });
       this.GET_QUESTIONS();
     },
     updateSort(data) {

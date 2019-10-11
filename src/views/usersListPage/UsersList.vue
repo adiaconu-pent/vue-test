@@ -11,11 +11,12 @@ import { userFilter } from "@/constants/filters";
 import { getAlertError } from "@/services/commonFunctions.js";
 import { HEADEER_TOTAL_COUNT, ITEMS_PER_PAGE } from "@/constants/constants";
 import { getFirstMothInt } from "@/services/commonFunctions";
-import { SET_USER_SORT, SET_PAGINATION_FILTER } from "@/store/mutation-types";
+import { SET_USER_SORT } from "@/store/mutation-types";
 import {
   UPDATE_USER_FILTER,
   GET_USER,
-  UPDATE_USER_SORT
+  UPDATE_USER_SORT,
+  UPDATE_PAGIANTION_FILTER
 } from "@/store/action-types";
 
 export default {
@@ -34,11 +35,8 @@ export default {
   methods: {
     updateCurrentPage(data) {
       const { page } = data;
-      if (this.currentPage !== page) this.currentPage = page;
-      this.$store.commit(
-        SET_PAGINATION_FILTER,
-        `?_page=${this.currentPage}&_limit=20`
-      );
+      this.currentPage = page;
+      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage);
       this.$store.dispatch(GET_USER);
     },
     updateCurrentFilter({ filter, currentTab }) {
@@ -62,7 +60,6 @@ export default {
         UPDATE_USER_FILTER,
         `&sort=${this.curentUserSort}&display_name_like=${this.searchedText}`
       );
-      this.updateCurrentPage({ page: this.currentPage });
     }
   }
 };
