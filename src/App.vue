@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import CustomHeader from "./components/header/TheHeader.vue";
+import CustomHeader from './components/TheHeader.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: { CustomHeader }
-};
+}
 </script>

@@ -1,7 +1,0 @@
-@mixin custom-margin($margin, $value) {
-  #{$margin}: $value;
-}
-
-.nav-divider {
-  @include custom-margin(margin-left, 15px);
-}
