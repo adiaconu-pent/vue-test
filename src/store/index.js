@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import actions from './actions';
-import mutations from './mutations';
-import questions from './modules/questions';
-import tags from './modules/tags';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import actions from './actions'
+import mutations from './mutations'
+import questions from './modules/questions'
+import tags from './modules/tags'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -20,13 +20,13 @@ export default new Vuex.Store({
       reputation: 696,
       user_id: 1283198,
       profile_image: 'https://i.stack.imgur.com/vIM81.jpg?s=128&g=1',
-      display_name: 'Prasaathviki',
-    },
+      display_name: 'Prasaathviki'
+    }
   },
   mutations,
   actions,
   getters: {
-    USERS: state => state.users,
+    USERS: state => state.users
   },
-  modules: { questions, tags },
-});
+  modules: { questions, tags }
+})

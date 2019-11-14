@@ -9,5 +9,5 @@ export default {
     error: String,
     isLoading: Boolean
   }
-};
+}
 </script>

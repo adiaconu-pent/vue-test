@@ -8,5 +8,5 @@ export default {
     tags: Array,
     navigate: String
   }
-};
+}
 </script>

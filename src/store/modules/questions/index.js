@@ -1,12 +1,12 @@
-import actions from './actions';
-import mutations from './mutations';
+import actions from './actions'
+import mutations from './mutations'
 
 export default {
   namespaced: true,
   state: {
     questions: [],
-    questionsQuery: '&_sort=score',
+    questionsQuery: '&_sort=score'
   },
   actions,
-  mutations,
-};
+  mutations
+}

@@ -1,10 +1,10 @@
-import { SET_QUESTIONS, SET_QUESTION_QUERY } from './mutation-types';
+import { SET_QUESTIONS, SET_QUESTION_QUERY } from './mutation-types'
 
 export default {
   [SET_QUESTIONS]: (state, payload) => {
-    state.questions = payload;
+    state.questions = payload
   },
   [SET_QUESTION_QUERY]: (state, payload) => {
-    state.questionsQuery = payload;
-  },
-};
+    state.questionsQuery = payload
+  }
+}

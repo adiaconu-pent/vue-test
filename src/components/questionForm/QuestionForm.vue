@@ -1,27 +1,27 @@
 <template src="./template.html"></template>
 
 <script>
-import { ValidationObserver, ValidationProvider } from "vee-validate";
+import { ValidationObserver, ValidationProvider } from 'vee-validate'
 
 export default {
-  data() {
+  data () {
     return {
       valid: false,
-      body: "",
-      title: ""
-    };
+      body: '',
+      title: ''
+    }
   },
   components: { ValidationObserver, ValidationProvider },
   methods: {
-    submit() {
-      this.$emit("submitQuestion", { body: this.body, title: this.title });
-      this.resetForm();
+    submit () {
+      this.$emit('submitQuestion', { body: this.body, title: this.title })
+      this.resetForm()
     },
-    resetForm() {
-      this.$refs.formObserver.reset();
-      this.body = "";
-      this.title = "";
+    resetForm () {
+      this.$refs.formObserver.reset()
+      this.body = ''
+      this.title = ''
     }
   }
-};
+}
 </script>

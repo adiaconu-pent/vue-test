@@ -6,7 +6,7 @@ export default {
     imageUrl: {
       type: String,
       required: true,
-      default: ""
+      default: ''
     },
     name: {
       type: String,
@@ -18,5 +18,5 @@ export default {
       default: 0
     }
   }
-};
+}
 </script>

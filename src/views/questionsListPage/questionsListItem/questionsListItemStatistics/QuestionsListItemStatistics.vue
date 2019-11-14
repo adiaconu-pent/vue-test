@@ -2,7 +2,6 @@
 <style lang="scss" src='./style.scss'></style>
 
 <script>
-import { getDateFromInt } from "@/services/commonFunctions";
 export default {
   props: {
     votes: {
@@ -21,5 +20,5 @@ export default {
       default: 0
     }
   }
-};
+}
 </script>

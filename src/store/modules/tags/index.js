@@ -1,13 +1,13 @@
-import actions from './actions';
-import mutations from './mutations';
+import actions from './actions'
+import mutations from './mutations'
 
 export default {
   namespaced: true,
   state: {
     tags: [],
     tagsQuery: '&_sort=count',
-    tagsSort: 'count',
+    tagsSort: 'count'
   },
   actions,
-  mutations,
-};
+  mutations
+}

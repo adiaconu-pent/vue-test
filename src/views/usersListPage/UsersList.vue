@@ -2,76 +2,76 @@
 <style lang="scss" src="./style.scss"></style>
 
 <script>
-import { mapState } from "vuex";
-import UsersListItem from "./usersListItem/UsersListItem.vue";
-import CustomFilter from "@/components/customFilter/CustomFilter.vue";
-import ComponentLayout from "@/components/componentLayout/ComponentLayout.vue";
-import { userFilter } from "@/constants/filters";
+import { mapState } from 'vuex'
+import UsersListItem from './usersListItem/UsersListItem.vue'
+import CustomFilter from '@/components/customFilter/CustomFilter.vue'
+import ComponentLayout from '@/components/componentLayout/ComponentLayout.vue'
+import { userFilter } from '@/constants/filters'
 import {
   getFirstMothInt,
   buildSortLikeQuery,
   buildGraterThenQuery
-} from "@/services/commonFunctions";
+} from '@/services/commonFunctions'
 import {
   UPDATE_USER_FILTER,
   GET_USER,
   UPDATE_USER_SORT,
   UPDATE_PAGIANTION_FILTER
-} from "@/store/action-types";
+} from '@/store/action-types'
 
 export default {
-  name: "users-list",
+  name: 'users-list',
   components: { UsersListItem, CustomFilter, ComponentLayout },
-  data() {
+  data () {
     return {
       userFilter,
       currentPage: 1,
-      searchedText: ""
-    };
+      searchedText: ''
+    }
   },
   computed: {
     ...mapState([
-      "users",
-      "error",
-      "totalPages",
-      "isLoading",
-      "curentUserSort",
-      "userQuery"
+      'users',
+      'error',
+      'totalPages',
+      'isLoading',
+      'curentUserSort',
+      'userQuery'
     ])
   },
   methods: {
-    updateCurrentPage(data) {
-      const { page } = data;
-      this.currentPage = page;
-      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage);
-      this.$store.dispatch(GET_USER);
+    updateCurrentPage (data) {
+      const { page } = data
+      this.currentPage = page
+      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage)
+      this.$store.dispatch(GET_USER)
     },
-    updateCurrentFilter({ filter, currentTab }) {
-      let query = buildSortLikeQuery(filter, "display_name", this.searchedText);
-      if (currentTab != "tab-reputation") {
-        query += buildGraterThenQuery("creation_date", getFirstMothInt());
+    updateCurrentFilter ({ filter, currentTab }) {
+      let query = buildSortLikeQuery(filter, 'display_name', this.searchedText)
+      if (currentTab !== 'tab-reputation') {
+        query += buildGraterThenQuery('creation_date', getFirstMothInt())
       }
-      this.$store.dispatch(UPDATE_USER_SORT, filter);
-      this.$store.dispatch(UPDATE_USER_FILTER, query);
+      this.$store.dispatch(UPDATE_USER_SORT, filter)
+      this.$store.dispatch(UPDATE_USER_FILTER, query)
     }
   },
   watch: {
     currentPage: {
       immediate: true,
-      handler() {
-        this.updateCurrentPage({ page: this.currentPage });
+      handler () {
+        this.updateCurrentPage({ page: this.currentPage })
       }
     },
-    searchedText: function() {
+    searchedText: function () {
       this.$store.dispatch(
         UPDATE_USER_FILTER,
         buildSortLikeQuery(
           this.curentUserSort,
-          "display_name",
+          'display_name',
           this.searchedText
         )
-      );
+      )
     }
   }
-};
+}
 </script>

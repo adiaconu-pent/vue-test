@@ -5,25 +5,25 @@ const userFilter = [
     subLabels: [
       {
         label: 'week',
-        value: 'reputation_change_week',
+        value: 'reputation_change_week'
       },
       {
         label: 'month',
-        value: 'reputation_change_month',
+        value: 'reputation_change_month'
       },
       {
         label: 'quarter',
-        value: 'reputation_change_quarter',
+        value: 'reputation_change_quarter'
       },
       {
         label: 'year',
-        value: 'reputation_change_year',
+        value: 'reputation_change_year'
       },
       {
         label: 'all',
-        value: 'reputation',
-      },
-    ],
+        value: 'reputation'
+      }
+    ]
   },
   {
     label: 'New users',
@@ -31,40 +31,40 @@ const userFilter = [
     subLabels: [
       {
         label: 'Reputation',
-        value: 'reputation',
+        value: 'reputation'
       },
       {
         label: 'Creation date',
-        value: 'creation_date',
-      },
-    ],
-  },
-];
+        value: 'creation_date'
+      }
+    ]
+  }
+]
 
 const questionFilters = [
   {
     label: 'Popular',
-    value: 'score',
+    value: 'score'
   },
   {
     label: 'Name',
-    value: 'title',
+    value: 'title'
   },
   {
     label: 'New',
-    value: 'creation_date',
-  },
-];
+    value: 'creation_date'
+  }
+]
 
 const tagsFilters = [
   {
     label: 'Popular',
-    value: 'count',
+    value: 'count'
   },
   {
     label: 'Name',
-    value: 'name',
-  },
-];
+    value: 'name'
+  }
+]
 
-export { userFilter, questionFilters, tagsFilters };
+export { userFilter, questionFilters, tagsFilters }

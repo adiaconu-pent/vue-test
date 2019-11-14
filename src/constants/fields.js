@@ -11,9 +11,9 @@ const userFields = {
   MONTH_REPUTATION: 'reputation_change_month',
   QUARTER_REPUTATION: 'reputation_change_quarter',
   YEAR_REPUTATION: 'reputation_change_year',
-  CREATION_DATE: 'creation_date',
-};
+  CREATION_DATE: 'creation_date'
+}
 
-const tagFields = {};
+const tagFields = {}
 
-export { userFields, tagFields };
+export { userFields, tagFields }

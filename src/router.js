@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import UserList from './views/usersListPage/UsersList.vue';
-import NotFoundComponent from './components/NotFoundComponent.vue';
-import QuestionDetails from './views/questionDetailsPage/QuestionDetails.vue';
-import AddQuestion from './views/addQuestionPage/AddQuestion.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
+import UserList from './views/usersListPage/UsersList.vue'
+import NotFoundComponent from './components/NotFoundComponent.vue'
+import QuestionDetails from './views/questionDetailsPage/QuestionDetails.vue'
+import AddQuestion from './views/addQuestionPage/AddQuestion.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',
@@ -14,29 +14,29 @@ export default new Router({
     {
       path: '/',
       name: 'users',
-      component: UserList,
+      component: UserList
     },
     {
       path: '/questions',
       name: 'questions',
-      component: () => import('./views/questionsListPage/QuestionList.vue'),
+      component: () => import('./views/questionsListPage/QuestionList.vue')
     },
     {
       path: '/tags',
-      component: () => import('./views/tagsListPage/TagsList.vue'),
+      component: () => import('./views/tagsListPage/TagsList.vue')
     },
     {
       path: '/questions/:id',
-      component: QuestionDetails,
+      component: QuestionDetails
     },
     {
       path: '/question/add',
       name: 'user',
-      component: AddQuestion,
+      component: AddQuestion
     },
     {
       path: '*',
-      component: NotFoundComponent,
-    },
-  ],
-});
+      component: NotFoundComponent
+    }
+  ]
+})
