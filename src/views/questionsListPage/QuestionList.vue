@@ -1,5 +1,16 @@
-<template src="./template.html"></template>
-<style lang="scss" src='./style.scss'></style>
+<template>
+  <div class="questions">
+    <component-layout title="Question" :error="error" :isLoading="isLoading">
+      <div v-if="questions.questions.length">
+        <custom-filter defaultTab="tab-score" @updateParentSort="updateSort" :filters="questionFilters" />
+        <v-list three-line avatar>
+          <QuestionsListItem v-for="question in questions.questions" :question="question" :key="question.id" />
+        </v-list>
+        <v-pagination v-model="currentPage" :length="totalPages"></v-pagination>
+      </div>
+    </component-layout>
+  </div>
+</template>
 
 <script>
 import { mapState, mapActions } from 'vuex'

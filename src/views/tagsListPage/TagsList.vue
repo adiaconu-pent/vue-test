@@ -1,5 +1,28 @@
-<template src="./template.html"></template>
-<style lang="scss" src="@/styles/tags.scss"></style>
+<template>
+  <div class="questions">
+    <component-layout title="Tags" :error="error" :isLoading="isLoading">
+      <v-text-field v-model="searchedText" placeholder="Search by name">
+      </v-text-field>
+      <custom-filter defaultTab="tab-count" @updateParentSort="updateSort" :filters="tagsFilters" />
+      <div v-if="tags.tags.length">
+        <v-list three-line avatar>
+          <v-row>
+            <v-col cols="12" md="3" sm="4" v-for="tag in tags.tags" :key="tag.name">
+              <v-list-item>
+                <v-list-item-content>
+                  <v-row no-gutters align="center">
+                    <v-chip>{{tag.name}} </v-chip><span class="text-second"> × {{tag.count}}</span>
+                  </v-row>
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+          </v-row>
+        </v-list>
+        <v-pagination v-model="currentPage" :length="totalPages"></v-pagination>
+      </div>
+    </component-layout>
+  </div>
+</template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
@@ -53,3 +76,5 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" src="@/styles/tags.scss"></style>

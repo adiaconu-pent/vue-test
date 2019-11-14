@@ -1,4 +1,14 @@
-<template src="./template.html"></template>
+<template>
+  <v-list-item>
+    <v-list-item-avatar>
+      <v-img :src="user.profile_image"></v-img>
+    </v-list-item-avatar>
+    <v-list-item-content>
+      <v-list-item-title v-html="user.display_name"></v-list-item-title>
+      <v-list-item-subtitle v-html="subtitle"></v-list-item-subtitle>
+    </v-list-item-content>
+  </v-list-item>
+</template>
 
 <script>
 import { userFields } from '@/constants/fields'

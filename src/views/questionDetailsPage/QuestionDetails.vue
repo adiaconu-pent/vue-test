@@ -1,5 +1,29 @@
-<template src="./template.html"></template>
-<style lang="scss" src='./style.scss'></style>
+<template>
+  <v-card>
+    <ComponentLayout :error="error" :isLoading="isLoading" />
+    <div v-if="data">
+      <p v-html="data.title" class="display-1"></p>
+      <p>Asked <span>{{getDateFromInt(data.creation_date)}}</span> Active
+        <span>{{getDateFromInt(data.last_activity_date)}}</span> Viewed <span>{{data.view_count || 0}} times</span>
+      </p>
+      <v-divider></v-divider>
+      <v-row>
+        <v-col cols="12" md="2">
+          <p>{{data.score}}</p>
+        </v-col>
+        <v-col cols="12" md="10">
+          <QuestionBody :title="data.title" :body="data.body" :tags="data.tags" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" md="6">
+          <UserDetails :imageUrl="data.owner.profile_image" :name="data.owner.display_name"
+                       :score="data.owner.reputation" />
+        </v-col>
+      </v-row>
+    </div>
+  </v-card>
+</template>
 
 <script>
 import questionService from '@/services/api/questions'

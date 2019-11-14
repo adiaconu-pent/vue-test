@@ -1,5 +1,16 @@
-<template src="./template.html"></template>
-<style lang="scss" src='./style.scss'></style>
+<template>
+  <div>
+    <div>
+      <p class="text-primary">{{votes}}</p>
+      <p class="text-second"> votes</p>
+    </div>
+    <div>
+      <p class="text-primary">{{answers}}</p>
+      <p class="text-second"> answers</p>
+    </div>
+    <p class="text-second"><span>{{views}}</span><span> views</span></p>
+  </div>
+</template>
 
 <script>
 export default {
@@ -22,3 +33,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .question-card {
+    .statistic-data {
+      text-align: center;
+      padding-top: 15px;
+      color: #6a737c;
+    }
+  }
+</style>

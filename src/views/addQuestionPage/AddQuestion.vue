@@ -1,4 +1,10 @@
-<template src="./template.html"></template>
+<template>
+  <div>
+    <ComponentLayout title="Add a new question" :error="error" :isLoading="isLoading" />
+    <v-alert v-if="success" type="success">{{success}}</v-alert>
+    <QuestionForm @submitQuestion="addQuestion" />
+  </div>
+</template>
 
 <script>
 import QuestionForm from '@/components/questionForm/QuestionForm.vue'
