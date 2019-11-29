@@ -1,7 +1,7 @@
 <template>
   <div>
     <ComponentLayout title="Add a new question" :error="error" :isLoading="isLoading" />
-    <v-alert v-if="success" type="success">{{success}}</v-alert>
+    <b-alert :show="success" variant="success">{{success}}</b-alert>
     <QuestionForm @submitQuestion="addQuestion" />
   </div>
 </template>
