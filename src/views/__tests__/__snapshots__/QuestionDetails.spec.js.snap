@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionDetails.vue render the user image 1`] = `
+<v-card>
+  <componentlayout-stub error="" isloading="true"></componentlayout-stub>
+  <!---->
+</v-card>
+`;
