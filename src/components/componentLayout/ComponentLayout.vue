@@ -2,7 +2,9 @@
   <div>
     <p v-html="title" class="display-1 text-center margin-top"></p>
     <b-alert :show="!isLoading" variant="danger">{{error}}</b-alert>
-    <v-text-field v-if="isLoading" color="success" loading disabled></v-text-field>
+    <div class="text-center">
+      <b-spinner variant="success" label="Spinning" v-if="isLoading"></b-spinner>
+    </div>
     <slot></slot>
   </div>
 </template>
