@@ -18,21 +18,7 @@ import {
 import { getAlertError } from '@/services/commonFunctions'
 
 export default {
-  [GET_USER]: async ({ commit, state }) => {
-    commit(SET_IS_LOADING, true)
-    userService
-      .getUsers(`${state.paginationQuery}${state.userQuery}`)
-      .then((response) => {
-        const totalPages = Math.ceil(response.headers[HEADEER_TOTAL_COUNT] / ITEMS_PER_PAGE)
-        commit(SET_TOTAL_PAGES, totalPages)
-        commit(SET_USER, response.data)
-      })
-      .catch((error) => {
-        commit(SET_ERROR, getAlertError(error))
-        console.log(error)
-      })
-      .then(() => commit(SET_IS_LOADING, false))
-  },
+
   [UPDATE_USER_FILTER]: async ({ commit, dispatch }, payload) => {
     commit(SET_USER_QUERY, payload)
     dispatch(GET_USER)

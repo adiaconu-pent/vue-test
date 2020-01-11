@@ -35,9 +35,9 @@ export default {
   methods: {
     ...mapActions('questions', ['GET_QUESTIONS', 'UPDATE_QUESTION_QUERY']),
     updateCurrentPage () {
-      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
-        root: true
-      })
+      // this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
+      //   root: true
+      // })
       this.GET_QUESTIONS()
     },
     updateSort (data) {

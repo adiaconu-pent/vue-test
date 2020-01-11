@@ -46,9 +46,9 @@ export default {
   methods: {
     ...mapActions('tags', ['GET_TAGS', 'UPDATE_TAG_QUERY', 'UPDATE_TAG_SORT']),
     updateCurrentPage () {
-      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
-        root: true
-      })
+      // this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage, {
+      //   root: true
+      // })
       this.GET_TAGS()
     },
     updateSort (data) {

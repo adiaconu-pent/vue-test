@@ -15,9 +15,7 @@ export default {
   [SET_PAGINATION_FILTER]: (state, payload) => {
     state.paginationQuery = payload
   },
-  [SET_USER]: (state, users) => {
-    state.users = users
-  },
+
   [SET_USER_SORT]: (state, sort) => {
     state.curentUserSort = sort
   },

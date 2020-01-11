@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import UsersListItem from './usersListItem/UsersListItem.vue'
 import CustomFilter from '@/components/customFilter/CustomFilter.vue'
 import ComponentLayout from '@/components/componentLayout/ComponentLayout.vue'
@@ -38,6 +38,7 @@ import {
   UPDATE_USER_SORT,
   UPDATE_PAGIANTION_FILTER
 } from '@/store/action-types'
+import { FETCH_USERS } from '../../store/action-types'
 
 export default {
   name: 'users-list',
@@ -51,28 +52,34 @@ export default {
   },
   computed: {
     ...mapState([
-      'users',
       'error',
       'totalPages',
       'isLoading',
       'curentUserSort',
       'userQuery'
-    ])
+    ]),
+    ...mapGetters({
+      users: 'users/getUsers'
+    })
   },
   methods: {
+    ...mapActions({
+      getUsers: `'users/'${FETCH_USERS}`,
+      updatePagination: `general/${UPDATE_PAGIANTION_FILTER}`
+    }),
     updateCurrentPage (data) {
       const { page } = data
       this.currentPage = page
-      this.$store.dispatch(UPDATE_PAGIANTION_FILTER, this.currentPage)
-      this.$store.dispatch(GET_USER)
+      // this.updatePagination(this.currentPage)
+      this.getUsers()
     },
     updateCurrentFilter ({ filter, currentTab }) {
       let query = buildSortLikeQuery(filter, 'display_name', this.searchedText)
       if (currentTab !== 'tab-reputation') {
         query += buildGraterThenQuery('creation_date', getFirstMothInt())
       }
-      this.$store.dispatch(UPDATE_USER_SORT, filter)
-      this.$store.dispatch(UPDATE_USER_FILTER, query)
+      // this.$store.dispatch(UPDATE_USER_SORT, filter)
+      // this.$store.dispatch(UPDATE_USER_FILTER, query)
     }
   },
   watch: {

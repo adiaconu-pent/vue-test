@@ -11,6 +11,7 @@ import QuestionForm from '@/components/questionForm/QuestionForm.vue'
 import ComponentLayout from '@/components/componentLayout/ComponentLayout.vue'
 import questionService from '@/services/api/questions'
 import { getDateInt } from '@/services/commonFunctions'
+import { mapGetters } from 'vuex'
 export default {
   data: function () {
     return {
@@ -20,9 +21,7 @@ export default {
     }
   },
   computed: {
-    owner () {
-      return this.$store.state.owner
-    }
+    ...mapGetters('users', { owner: 'getOwner' })
   },
   components: { QuestionForm, ComponentLayout },
   methods: {
