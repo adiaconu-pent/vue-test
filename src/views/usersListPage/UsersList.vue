@@ -34,7 +34,6 @@ import {
 } from '@/services/commonFunctions'
 import {
   UPDATE_USER_FILTER,
-  GET_USER,
   UPDATE_USER_SORT,
   UPDATE_PAGIANTION_FILTER
 } from '@/store/action-types'
@@ -52,25 +51,27 @@ export default {
   },
   computed: {
     ...mapState([
-      'error',
-      'totalPages',
-      'isLoading',
-      'curentUserSort',
+      'currentUserSort',
       'userQuery'
     ]),
     ...mapGetters({
-      users: 'users/getUsers'
+      users: 'users/getUsers',
+      totalPages: 'general/getTotalPages',
+      error: 'general/getErrorMessage',
+      isLoading: 'general/getLoadingStatus'
     })
   },
   methods: {
     ...mapActions({
-      getUsers: `'users/'${FETCH_USERS}`,
-      updatePagination: `general/${UPDATE_PAGIANTION_FILTER}`
+      getUsers: `users/${FETCH_USERS}`,
+      updatePagination: `general/${UPDATE_PAGIANTION_FILTER}`,
+      updateUserSort: `general/${UPDATE_USER_SORT}`,
+      updateUserFilter: `general/${UPDATE_USER_FILTER}`
     }),
     updateCurrentPage (data) {
       const { page } = data
       this.currentPage = page
-      // this.updatePagination(this.currentPage)
+      this.updatePagination(this.currentPage)
       this.getUsers()
     },
     updateCurrentFilter ({ filter, currentTab }) {
@@ -78,8 +79,8 @@ export default {
       if (currentTab !== 'tab-reputation') {
         query += buildGraterThenQuery('creation_date', getFirstMothInt())
       }
-      // this.$store.dispatch(UPDATE_USER_SORT, filter)
-      // this.$store.dispatch(UPDATE_USER_FILTER, query)
+      this.updateUserSort(filter)
+      this.updateUserFilter(query)
     }
   },
   watch: {
@@ -90,14 +91,11 @@ export default {
       }
     },
     searchedText: function () {
-      this.$store.dispatch(
-        UPDATE_USER_FILTER,
-        buildSortLikeQuery(
-          this.curentUserSort,
-          'display_name',
-          this.searchedText
-        )
-      )
+      this.updateUserFilter(buildSortLikeQuery(
+        this.currentUserSort,
+        'display_name',
+        this.searchedText
+      ))
     }
   }
 }

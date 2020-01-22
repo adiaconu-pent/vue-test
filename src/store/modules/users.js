@@ -27,25 +27,26 @@ export default {
     getOwner: state => state.owner
   },
   actions: {
-    [FETCH_USERS]: async ({ commit, state, rootState }) => {
+    [FETCH_USERS]: async ({ commit, rootState }) => {
       commit('general/SET_IS_LOADING', true, { root: true })
+      const { paginationQuery, userQuery } = rootState.general
       userService
-        .getUsers(`${rootState.paginationQuery}${rootState.userQuery}`)
+        .getUsers(`${paginationQuery}${userQuery}`)
         .then((response) => {
           const totalPages = Math.ceil(response.headers[HEADEER_TOTAL_COUNT] / ITEMS_PER_PAGE)
-          commit(SET_TOTAL_PAGES, totalPages, { root: true })
+          commit(`general/${SET_TOTAL_PAGES}`, totalPages, { root: true })
           commit(SET_USER, response.data)
         })
         .catch((error) => {
-          commit(SET_ERROR, getAlertError(error), { root: true })
+          commit(`general/${SET_ERROR}`, getAlertError(error), { root: true })
           console.log(error)
         })
-        .then(() => commit('general/SET_IS_LOADING', false, { root: true }))
+        .then(() => commit(`general/${SET_IS_LOADING}`, false, { root: true }))
     }
   },
   mutations: {
     [SET_USER]: (state, users) => {
       state.users = users
-    },
+    }
   }
 }

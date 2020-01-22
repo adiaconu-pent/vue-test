@@ -16,27 +16,27 @@ export default new Router({
       name: 'users',
       component: UserList
     },
-    {
-      path: '/questions',
-      name: 'questions',
-      component: () => import('./views/questionsListPage/QuestionList.vue')
-    },
-    {
-      path: '/tags',
-      component: () => import('./views/tagsListPage/TagsList.vue')
-    },
-    {
-      path: '/questions/:id',
-      component: QuestionDetails
-    },
-    {
-      path: '/question/add',
-      name: 'user',
-      component: AddQuestion
-    },
-    {
-      path: '*',
-      component: NotFoundComponent
-    }
+    // {
+    //   path: '/questions',
+    //   name: 'questions',
+    //   component: () => import('./views/questionsListPage/QuestionList.vue')
+    // },
+    // {
+    //   path: '/tags',
+    //   component: () => import('./views/tagsListPage/TagsList.vue')
+    // },
+    // {
+    //   path: '/questions/:id',
+    //   component: QuestionDetails
+    // },
+    // {
+    //   path: '/question/add',
+    //   name: 'user',
+    //   component: AddQuestion
+    // },
+    // {
+    //   path: '*',
+    //   component: NotFoundComponent
+    // }
   ]
 })

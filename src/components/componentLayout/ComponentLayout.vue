@@ -1,11 +1,11 @@
 <template>
   <div>
-    <p v-html="title" class="display-1 text-center margin-top"></p>
-    <b-alert :show="!isLoading" variant="danger">{{error}}</b-alert>
+    <p v-html="title" class="display-1 text-center margin-top" />
+    <b-alert :show="!isLoading && error !== ''" variant="danger">{{error}}</b-alert>
     <div class="text-center">
-      <b-spinner variant="success" label="Spinning" v-if="isLoading"></b-spinner>
+      <b-spinner variant="success" label="Spinning" v-if="isLoading" />
     </div>
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 

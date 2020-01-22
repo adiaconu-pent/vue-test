@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   error: '',
-  curentUserSort: 'reputation_change_week',
+  currentUserSort: 'reputation_change_week',
   paginationQuery: '?_page=1&_limit=20',
   userQuery: '&_sort=reputation_change_week',
   totalPages: 0,
@@ -22,12 +22,14 @@ export default {
   namespaced: true,
   state: initialState,
   getters: {
-
+    getTotalPages: state => state.totalPages,
+    getErrorMessage: state => state.error,
+    getLoadingStatus: state => state.isLoading
   },
   actions: {
     [UPDATE_USER_FILTER]: async ({ commit, dispatch }, payload) => {
       commit(SET_USER_QUERY, payload)
-      dispatch(FETCH_USERS, { root: true })
+      dispatch(`users/${FETCH_USERS}`, {}, { root: true })
     },
     [UPDATE_USER_SORT]: ({ commit }, payload) => {
       commit(SET_USER_SORT, payload)
@@ -45,7 +47,7 @@ export default {
     },
 
     [SET_USER_SORT]: (state, sort) => {
-      state.curentUserSort = sort
+      state.currentUserSort = sort
     },
     [SET_ERROR]: (state, error) => {
       state.error = error

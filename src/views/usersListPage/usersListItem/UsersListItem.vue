@@ -22,6 +22,7 @@ export default {
     }
   },
   computed: {
+    // TODO add default avatar if the image is not found
     subtitle: function () {
       const { curentUserSort } = this.$store.state
       const subtitle =
